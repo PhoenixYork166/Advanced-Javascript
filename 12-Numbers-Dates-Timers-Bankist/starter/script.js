@@ -49,7 +49,34 @@ const account2 = {
   locale: 'en-US',
 };
 
-const accounts = [account1, account2];
+const account3 = {
+  owner: 'Steven Thomas Williams',
+  movements: [200, -200, 340, -300, -20, 50, 400, -460],
+  interestRate: 0.7,
+  pin: 3333,
+
+  movementsDates: [
+    '2019-11-01T13:15:33.035Z',
+    '2019-11-30T09:48:16.867Z',
+    '2019-12-25T06:04:23.907Z',
+    '2020-01-25T14:18:46.235Z',
+    '2020-02-05T16:33:06.386Z',
+    '2020-04-10T14:43:26.374Z',
+    '2020-06-25T18:49:59.371Z',
+    '2020-07-26T12:01:20.894Z',
+  ],
+  currency: 'USD',
+  locale: 'en-US',
+};
+
+const account4 = {
+  owner: 'Sarah Smith',
+  movements: [430, 1000, 700, 50, 90],
+  interestRate: 1,
+  pin: 4444,
+}
+
+const accounts = [account1, account2, account3, account4];
 
 /////////////////////////////////////////////////
 // Elements
@@ -251,3 +278,54 @@ btnSort.addEventListener('click', function (e) {
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
+// Default Base 64 Int
+console.log(23 === 23.00); // true
+console.log(23 === 23.01); // false
+
+// Base 10 = 0 to 9
+// Binary base 2 = 0 & 1
+console.log(0.1 + 0.2); // 0.30000000000000004 weird results
+console.log(10/3); // 3.3333333333333335 weird results
+// JS cannot perform really precisely scientific calculations
+// behind the scenes
+
+// Another trick to convert String -> Number
+console.log(Number('23')); // In the past
+console.log(+'23'); // + will auto-convert sequential str -> number
+// Number(var) => +(var)
+
+// Parsing with Base10
+console.log(Number.parseInt('30px', 10)); // 30
+console.log(Number.parseInt('e23', 10)); // NaN
+// Parsing with Binary
+console.log(Number.parseInt('30px', 2)); // NaN
+console.log(Number.parseInt('e23', 2)); // NaN
+// Parsing with Float
+console.log(Number.parseFloat('2.5rem')); // 2.5
+console.log(parseFloat('2.5rem')); // 2.5
+
+// is NaN
+console.log(Number.isNaN(20)); // false
+console.log(Number.isNaN('20')); // false
+console.log(Number.isNaN('String')); // false
+console.log(Number.isNaN(+'20X')); // true
+console.log(Number.isNaN('20px')); // false
+console.log(Number.isNaN(23/0)); // false - Infinity is a Number
+// isNaN is NOT a good way to check whether numbers are numbers
+
+// Number.isFinite(num) is a better way
+// for checking numbers
+console.log(Number.isFinite(20)); // true
+console.log(Number.isFinite('20')); // false
+console.log(Number.isFinite(23/0)); // false
+console.log(Number.isFinite(+'20')); // true
+console.log(Number.isFinite(+'20X')); // false
+console.log(Number.isFinite('I\'m ' + 1)); // false
+
+// Number.isInteger
+console.log(Number.isInteger(20)); // true
+console.log(Number.isInteger('20')); // false
+console.log(Number.isInteger(23/0)); // false
+console.log(Number.isInteger(+'20')); // true
+console.log(Number.isInteger(+'20X')); // false
+console.log(Number.isInteger('I\'m ' + 1)); // false
